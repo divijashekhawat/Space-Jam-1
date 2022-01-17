@@ -1,0 +1,14 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  color: white;
+}
+canvas{
+  border: 2px
+   solid black;
+}
+.spaceJam{
+  font-size: 50px;
+  color:palevioletred;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
