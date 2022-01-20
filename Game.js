@@ -42,7 +42,9 @@ class Game {
     player2opp.shapeColor="blue"
     player3opp.shapeColor="yellow"
   
-    
+    ball=createSprite(500,300,80,80)
+
+    players=[player3,player3opp,player2,player2opp]
 
     
     
@@ -53,6 +55,51 @@ class Game {
     form.hide();
     
     Player.getPlayerInfo();
+    Player.getBallInfo();
+    if(allPlayers !== undefined){
+
+      var index=0
+      for(var plr in allPlayers){
+        index= index+1
+
+        players[index-1].x=allPlayers[plr].x
+        players[index-1].y=allPlayers[plr].y
+
+    if (index===player.index){
+    
+      fill("white")
+      rect(players[index-1].x,players[index-1].x,70,70)
+    }
+
+        
+
+      }
+if(keyCode===32 && player.index !== null&& players[player.index-1].isTouching(ball) )
+{
+    player.ballX=player.x
+    player.ballY=player.y
+    player.updateBall()
+
+}
+
+
+   if(keyDown("up") && player.index !== null){
+    player.y-=10
+    player.update()
+   }
+   if(keyDown("down")&& player.index !== null){
+    player.y+=10
+    player.update()
+   }
+   if(keyDown("right")&& player.index !== null){
+    player.x+=10
+    player.update()
+   }
+   if(keyDown("left")&& player.index !== null){
+    player.x-=10
+    player.update()
+   }
+
     line(displayWidth/2,0, displayWidth/2, displayHeight)
     text(mouseX+"  "+mouseY,mouseX,mouseY)
     drawSprites();
@@ -65,7 +112,7 @@ class Game {
     text("2opp",player2opp.x,player2opp.y)
     text("3opp",player3opp.x,player3opp.y)
   }
-
+  }
   end(){
     console.log("Game Ended");
     console.log(player.rank);
