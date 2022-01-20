@@ -5,24 +5,24 @@ var playerCount;
 var allPlayers;
 var distance = 0;
 var database;
-
+var players;
 var form, player, game;
 
-var players, player1,player2,player3,player4, player2opp,player3opp,player5,player5opp
+var players, player1,player2,player3,player4, player2opp,player3opp,player5,player5opp,player1opp
 
-var track, car1_img, car2_img, car3_img, car4_img;
+var ball, ballInfo;
+
 
 function preload(){
-  backgroundpg1 = loadImage("../images/game-background-slide-1.jpg");
-  car1_img = loadImage("../images/car1.png");
-  car2_img = loadImage("../images/car2.png");
-  car3_img = loadImage("../images/car3.png");
-  car4_img = loadImage("../images/car4.png");
-  ground = loadImage("../images/ground.png");
+  backgroundpg1 = loadImage("../images/basketball court 1.jpg");
+
 }
 
 function setup(){
-  canvas = createCanvas(displayWidth, 600);
+  canvas = createCanvas(displayWidth-20, 600);
+  backSprite=createSprite(650,300,10,10)
+  backSprite.addImage(backgroundpg1)
+  backSprite.scale=1.60
   database = firebase.database();
   game = new Game();
   game.getState();
