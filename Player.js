@@ -1,9 +1,11 @@
 class Player {
   constructor(){
-    this.index = null;
-    this.distance = 0;
+    this.index = null;    
     this.name = null;
-    this.rank = null;
+    this.x = 0;
+    this.y = 0;
+    this.ballX=500;
+    this.ballY=500;
   }
 
   getCount(){
@@ -23,7 +25,19 @@ class Player {
     var playerIndex = "players/player" + this.index;
     database.ref(playerIndex).set({
       name:this.name,
-      distance:this.distance
+      x:this.x,
+      y:this.y
+      
+    });
+  }
+
+  updateBall(){
+    
+    database.ref("ball").set({
+      
+      x:this.ballX,
+      y:this.ballY
+      
     });
   }
 
@@ -31,6 +45,12 @@ class Player {
     var playerInfoRef = database.ref('players');
     playerInfoRef.on("value",(data)=>{
       allPlayers = data.val();
+    })
+  }
+  static getBallInfo(){
+    var playerInfoRef = database.ref('ball');
+    playerInfoRef.on("value",(data)=>{
+      ballInfo = data.val();
     })
   }
 
